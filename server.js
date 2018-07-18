@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 
 // Define routes
 var routes = require('./controllers/routes.js');
-app.use('/',routes);
+app.use('/', routes);
 
 // Default to Port 3000
 var port = 3000;
