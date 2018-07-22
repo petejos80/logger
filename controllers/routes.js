@@ -6,8 +6,15 @@ var logger = require('../models/logger.js');;
 router.get('/', function(req, res){
     logger.all(function(logger_data){
         console.log(logger_data);
-        res.render('index');
-    })
-})
+        res.render('index', {logger_data});
+    });
+});
+
+router.put('/loggers/update', function(req,res){
+    logger.update(req.body.logger_id, function(result){
+        console.log(result);
+        res.redirect('/');
+    });
+});
 
 module.exports = router;

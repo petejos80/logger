@@ -6,6 +6,10 @@ var logger = {
         orm.all('logger',function(res){
             cb(res);
         })
+    },
+
+    update: function(id,cb){
+        orm.update('logger',id,cb);
     }
 }
 
