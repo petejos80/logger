@@ -17,4 +17,10 @@ router.put('/loggers/update', function(req,res){
     });
 });
 
+router.post('/loggers/create', function(req,res) {
+    logger.create(req.body.logger_name, function(result){
+        res.redirect('/');
+    })
+})
+
 module.exports = router;

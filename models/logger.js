@@ -10,6 +10,10 @@ var logger = {
 
     update: function(id,cb){
         orm.update('logger',id,cb);
+    },
+
+    create: function(name,cb){
+        orm.create('logger', name, cb);
     }
 }
 

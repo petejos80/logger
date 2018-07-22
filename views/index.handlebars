@@ -23,5 +23,25 @@
                 {{/each}}
             </div>
         </div>
+
+        <div class="col-xs-6 text-center task">
+            {{#each logger_data}}
+                {{#if this.completed}}
+                    <input class="form-control" type="text" placeholder="{{this.id}}, {{this.logger_name}}" readonly>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="colx-xs-12 text-center enter_section">
+            <form action="/loggers/create" method="POST">
+                <input type="text" name="logger_name" class="form-control" value="" id="enter-text">
+                <button type="submit" class="btn btn-primary" id="text-enter-buttton">SUBMIT</button>
+            </form>
+            <p>Enter a task that needs to be completed</p>
+        </div>
     </div>
 </div>
