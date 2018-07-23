@@ -12,17 +12,17 @@ var routes = require('./controllers/routes.js');
 app.use('/', routes);
 
 // Server configuration
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 
 app.use(methodOverride('_method'));
 
 // Handlebars configuration
 app.engine('handlebars', exphbs({
-    defaultLarout: 'main'
+    defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
 
