@@ -6,34 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/logger_style.css">
     <title>Task Logger</title>
 </head>
 
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 text-center" id="top-bar">
-            <h1>Task Logger</h1>
+  <div class="page-header">
+    <h1>Task Logger</h1>      
+  </div>   
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="grey-body col-sm-6">
+      <div class="container">
+    <div class="col-xs-6 text-center task">
+        <div class="row">
+            {{#each logger_data}}
+                {{#unless this.completed}}
+        <div class="col-xs-9 text-center">
+            <pre>{{this.id}}, {{this.logger_name}}</pre>
         </div>
-        <div class="col-xs-6 text-center task">
-            <div class="row">
-                {{#each logger_data}}
-                    {{#unless this.completed}}
-            <div class="col-xs-9 text-center">
-                <pre>{{this.id}}, {{this.logger_name}}</pre>
-            </div>
-            <div class="col-xs-3 text-center">
-                <form method="POST" action="/loggers/update?_method=PUT">
-                    <input type="hidden" name="logger_id" type="text" value={{this.id}}>
-                    <br>
-                    <button type="submit" class="btn btn-default">
-                        Completed
-                    </button>
-                </form>
-            </div>
-                {{/unless}}
-                {{/each}}
-            </div>
+        <div class="col-xs-3 text-center">
+            <form method="POST" action="/loggers/update?_method=PUT">
+                <input type="hidden" name="logger_id" type="text" value={{this.id}}>
+                <br>
+                <button type="submit" class="btn btn-default">
+                    Completed
+                </button>
+            </form>
         </div>
+            {{/unless}}
+            {{/each}}
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-6" style="background-color:pink;">
+      <p>Sed ut perspiciatis...</p>
+    </div>
+  </div>
+{{!-- </div> --}}
+
+
 
         <div class="col-xs-6 text-center task">
             {{#each logger_data}}
