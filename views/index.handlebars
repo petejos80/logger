@@ -20,39 +20,31 @@
   <div class="row">
     <div class="grey-body col-sm-6">
       <div class="container">
-    <div class="col-xs-6 text-center task">
-        <div class="row">
-            {{#each logger_data}}
-                {{#unless this.completed}}
-        <div class="col-xs-9 text-center">
-            <pre>{{this.id}}, {{this.logger_name}}</pre>
+        <div class="col-xs-6 text-center task">
+            <div class="row">
+                {{#each logger_data}}
+                    {{#unless this.completed}}
+            <div class="card col-md-6 text-left">
+                <pre>{{this.id}}. {{this.logger_name}}</pre>
+            </div>
+            <div class="col-xs-3 text-center">
+                <form method="POST" action="/loggers/update?_method=PUT">
+                    <input type="hidden" name="logger_id" type="text" value={{this.id}}>
+                    <button type="submit" class="btn btn-default">
+                        Completed
+                    </button>
+                </form>
+            </div>
+                {{/unless}}
+                {{/each}}
+            </div>
         </div>
-        <div class="col-xs-3 text-center">
-            <form method="POST" action="/loggers/update?_method=PUT">
-                <input type="hidden" name="logger_id" type="text" value={{this.id}}>
-                <br>
-                <button type="submit" class="btn btn-default">
-                    Completed
-                </button>
-            </form>
-        </div>
-            {{/unless}}
-            {{/each}}
-        </div>
-    </div>
-    </div>
-    <div class="col-sm-6" style="background-color:pink;">
-      <p>Sed ut perspiciatis...</p>
     </div>
   </div>
-{{!-- </div> --}}
-
-
-
         <div class="col-xs-6 text-center task">
             {{#each logger_data}}
                 {{#if this.completed}}
-                    <input class="form-control" type="text" placeholder="{{this.id}}, {{this.logger_name}}" readonly>
+                    <input class="form-control" type="text" placeholder="{{this.id}}. {{this.logger_name}}" readonly>
                 {{/if}}
             {{/each}}
         </div>
@@ -61,12 +53,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="colx-xs-12 text-center enter_section">
+        <div class="card input-body">
+            <div class="card-body enter_section">
             <form action="/loggers/create" method="POST">
                 <input type="text" name="logger_name" class="form-control" value="" id="enter-text">
-                <button type="submit" class="btn btn-primary" id="text-enter-buttton">SUBMIT</button>
+                <button type="submit" class="btn btn-primary" id="text-enter-buttton">ADD TASKS</button>
             </form>
-            <p>Enter a task that needs to be completed</p>
         </div>
     </div>
 </div>
