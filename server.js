@@ -2,7 +2,7 @@ var express = require ('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var exphbs = require('express-handlebars');
-var port = process.env.PORT || 3000;
+let PORT = process.env.PORT || 8000;
 
 // Use Express
 var app = express();
@@ -27,6 +27,6 @@ var routes = require('./controllers/routes.js');
 app.use('/', routes);
 
 // Start the server
-app.listen(port, function() {
-    console.log("App is running on port " + port);
-  });  
+app.listen(PORT, () => {
+    console.log("Server listening on: http://localhost " + PORT)
+  });
