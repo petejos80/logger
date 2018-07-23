@@ -13,7 +13,7 @@ var logger = {
     },
 
     create: function(name,cb){
-        orm.create('logger', name, cb);
+        orm.create('logger',name,cb);
     }
 }
 
